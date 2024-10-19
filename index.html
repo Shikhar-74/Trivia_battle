@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Information</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h2>Enter Player Information</h2>
+    
+    <form id="playerForm">
+        <!-- Input for player names -->
+        <label for="player1">Player 1 Name:</label>
+        <input type="text" id="player1" name="player1" required><br><br>
+
+        <label for="player2">Player 2 Name:</label>
+        <input type="text" id="player2" name="player2" required><br><br>
+
+        <!-- Dropdown for category selection -->
+        <label for="category">Select Category:</label>
+        <select id="category" name="category">
+            <option value="society_and_culture">Society and Culture</option>
+            <option value="history">History</option>
+            <option value="sport_and_leisure">Sport and Leisure</option>
+            <option value="food_and_drink">Food and Drink</option>
+            <option value="arts_and_literature">Arts and Literature</option>
+            <option value="music">Music</option>
+            <option value="general_knowledge">General Knowledge</option>
+            <option value="film_and_tv">Film and TV</option>
+        </select><br><br>
+
+        <button id="start">Start Game</button>
+    </form>
+
+    <script src="./script.js"> </script>
+
+</body>
+</html>
+
+
