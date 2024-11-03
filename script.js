@@ -15,7 +15,7 @@ click.addEventListener('submit', (event) => {
     event.preventDefault()
     let category = document.getElementById('category').value;
     selectedCategory.push(category)
-    console.log(selectedCategory);
+    // console.log(selectedCategory);
 
     player1 = document.getElementById('player1').value;
     player2 = document.getElementById('player2').value;
@@ -85,10 +85,6 @@ function fetchQuestion(category) {
             .catch(err => {
                 reject('Error fetching questions: ' + err);
             });
-
-
-
-
     });
 }
 
@@ -150,19 +146,19 @@ function displayquestion() {
         ol.appendChild(li)
 
         li.addEventListener('click', () => {
-            checkoption(opt, correctoptions, difficultylevel)
+            checkoption(opt, correctoptions, difficultylevel,li)
         })
 
     })
-
-
-
 }
 
 
 
-function checkoption(option, correctAnswer, difficultyofquestion) {
+
+
+function checkoption(option, correctAnswer, difficultyofquestion,optionElement) {
     if (option == correctAnswer) {
+      optionElement.style.background = 'green'
         if (currentplayer == 0) {
             if (difficultyofquestion == 'easy') {
                 player1Score += 10
@@ -175,6 +171,7 @@ function checkoption(option, correctAnswer, difficultyofquestion) {
             }
         }
 
+
         else if (currentplayer == 1) {
             if (difficultyofquestion == 'easy') {
                 player2Score += 10
@@ -186,22 +183,22 @@ function checkoption(option, correctAnswer, difficultyofquestion) {
                 player2Score += 20
             }
         }
-    }
-    currentplayer = currentplayer === 0 ? 1 : 0;
-    mainDiv.innerHTML = ''
-
-    if (index < selectedQuestions.length - 1) {
-        index++
-
-
-
-        displayquestion()
-    }
-    else {
-        whatYouWant()
+    }else {
+        optionElement.style.backgroundColor = 'red'; 
     }
 
 
+
+    setTimeout(() => {
+        currentplayer = currentplayer === 0 ? 1 : 0;
+        mainDiv.innerHTML = '';
+        if (index < selectedQuestions.length - 1) {
+            index++;
+            displayquestion();
+        } else {
+            whatYouWant();
+        }
+    }, 1000); 
 
 }
 
@@ -232,8 +229,6 @@ function quitGameFunction() {
 
 
 function whatYouWant() {
-
-
     let countinewButton = document.createElement('button')
     countinewButton.textContent = 'Continue Game'
     let quitButton = document.createElement('button')
@@ -244,8 +239,6 @@ function whatYouWant() {
     quitButton.addEventListener('click', () => {
         quitGameFunction()
     })
-
-
     TotalGameRound++
     if (TotalGameRound <= 8) {
 
@@ -285,12 +278,11 @@ function whatYouWant() {
                         console.error(err);
                     });
             })
-
-
-
         });
-
     }
+
+
+
     else {
         countinewButton.addEventListener('click', () => {
             alert('well done you play all the caterogy please now quit the game')
@@ -298,11 +290,5 @@ function whatYouWant() {
         quitButton.addEventListener('click', () => {
           quitGameFunction()
         })
-
-
     }
-
-
-
-
 };
