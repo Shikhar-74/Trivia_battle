@@ -240,10 +240,11 @@ function whatYouWant() {
         quitGameFunction()
     })
     TotalGameRound++
+
     if (TotalGameRound <= 8) {
 
         countinewButton.addEventListener('click', () => {
-            // Reset for new round, but maintain previous scores and categories
+            
             mainDiv.innerHTML = `
            <form id="playerForm1">
                 <select id="category1" required>
